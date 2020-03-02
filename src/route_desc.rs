@@ -7,6 +7,7 @@ pub struct RouteDesc {
     verb: String,
     description: String, 
     parameters: HashMap<String,String>,
+    body: Option<String>
 }
 
 impl RouteDesc {
@@ -16,7 +17,8 @@ impl RouteDesc {
             route: route.into(),
             verb: verb.into(),
             description: description.into(),
-            parameters: HashMap::new()
+            parameters: HashMap::new(),
+            body: None
         }
     }
 
@@ -25,7 +27,12 @@ impl RouteDesc {
         self.parameters.insert(name.into(), value.into());
         self
     }
-
+    /// Add a body to the RouteDesc
+    pub fn body<I>(&mut self,  value: I) -> &mut Self where I: Into<String> {
+        self.body = Some(value.into());
+        self
+    }
+    
     /// Supports the builder pattern. Chain after  one or more add_parameter calls. 
     /// 
     /// # Example
