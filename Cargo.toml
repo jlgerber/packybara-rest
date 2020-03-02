@@ -7,9 +7,24 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rocket = "0.4.3"
-rocket_contrib = "0.4.3"
-packybara = {git= "https://github.com/jlgerber/packybara", tag="v0.44.0"}
+packybara = {git= "https://github.com/jlgerber/packybara", tag="v0.45.0"}
 serde = { version = "1.0.104", features = ["derive"] }
 log = "0.4.8"
 serde_json = "1.0.48"
+r2d2 = "0.8.8"
+r2d2_postgres = "0.16.0"
+tokio-postgres = "0.5.2"
+#
+[dependencies.rocket]
+git = "https://github.com/SergioBenitez/Rocket.git"
+branch="master"
+
+[dependencies.rocket_contrib]
+#version = "0.4.3"
+git = "https://github.com/SergioBenitez/Rocket.git"
+branch="master"
+features = ["postgres_pool"]
+
+[dependencies.postgres]
+version = "0.17.1"
+features = ["with-chrono-0_4"]
