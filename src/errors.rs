@@ -1,6 +1,8 @@
-use packybara::db::find::versionpin::FindVersionPinError;
+use packybara::db::{
+    find::versionpin::FindVersionPinError,
+    find_all::versionpins::FindAllVersionPinsError
+};
 use rocket::http::Status;
-use rocket_contrib::json::Json;
 use serde::Serialize;
 use rocket::response::{self, Response,Responder};
 use rocket::request::Request;
@@ -10,7 +12,8 @@ use rocket::http::ContentType;
 
 #[derive(Debug)]
 pub enum PackybaraRestError {
-    FindVersionPinError(FindVersionPinError)
+    FindVersionPinError(FindVersionPinError),
+    FindAllVersionPinsError(FindAllVersionPinsError)
 }
 
 #[derive(Serialize)]
@@ -19,7 +22,6 @@ pub struct ErrorResponse {
     pub message: String,
 }
 
-pub type ApiResult<T> = Result<Json<T>, PackybaraRestError>;
 
 #[derive(Debug,Serialize)]
 pub struct PbError {
@@ -33,7 +35,14 @@ impl From<PackybaraRestError> for PbError {
             PackybaraRestError::FindVersionPinError(e) => {
                 PbError {
                     status: 400,
-                    error: "FindVersionpinError",
+                    error: "FindVersionPinError",
+                    msg: e.to_string()
+                }
+            }
+            PackybaraRestError::FindAllVersionPinsError(e) => {
+                PbError {
+                    status: 400,
+                    error: "FindAllVersionPinsError",
                     msg: e.to_string()
                 }
             }
@@ -47,6 +56,12 @@ impl From<FindVersionPinError> for PackybaraRestError {
     }
 }
 
+impl From<FindAllVersionPinsError> for PackybaraRestError {
+    fn from(error: FindAllVersionPinsError) -> PackybaraRestError {
+        PackybaraRestError::FindAllVersionPinsError(error)
+    }
+}
+
 impl<'r> Responder<'r> for PackybaraRestError {
     fn respond_to(self,  _: &Request) -> response::Result<'r> {
        
@@ -54,7 +69,7 @@ impl<'r> Responder<'r> for PackybaraRestError {
         let msg = serde_json::to_string(&err).expect("counldnt convert error to json");
             
     
-        log::error!("PackybaraRestError::FindVersionpinError {}", &msg);
+        log::error!("PackybaraRestError {}", &msg);
         
         Response::build()
         .header(ContentType::JSON)
