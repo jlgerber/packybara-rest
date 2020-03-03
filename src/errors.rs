@@ -8,7 +8,8 @@ use packybara::db::{
     find_all::roles::FindAllRolesError,
     find_all::sites::FindAllSitesError,
     find::pins::FindPinsError,
-
+    search_attribute::SearchModeError,
+    find_all::pkgcoords::FindAllPkgCoordsError,
 };
 use strum;
 use rocket::http::Status;
@@ -31,6 +32,8 @@ pub enum PackybaraRestError {
     FindAllSitesError(FindAllSitesError),
     FindPinsError(FindPinsError),
     StrumParseError(strum::ParseError),
+    SearchModeError(SearchModeError),
+    FindAllPkgCoordsError(FindAllPkgCoordsError)
 }
 
 #[derive(Serialize)]
@@ -118,6 +121,20 @@ impl From<PackybaraRestError> for PbError {
                     msg: e.to_string()
                 }
             }
+            PackybaraRestError::SearchModeError(e) => {
+                PbError {
+                    status: 400,
+                    error: "SearchModeError",
+                    msg: e.to_string()
+                }
+            }
+            PackybaraRestError::FindAllPkgCoordsError(e) => {
+                PbError {
+                    status: 400,
+                    error: "FindAllPkgCoordsError",
+                    msg: e.to_string()
+                }
+            }
         }
     }
 }
@@ -182,6 +199,18 @@ impl From<strum::ParseError> for PackybaraRestError {
     }
 }
 
+impl From<SearchModeError> for PackybaraRestError {
+    fn from(error: SearchModeError) -> PackybaraRestError {
+        PackybaraRestError::SearchModeError(error)
+    }
+}
+
+impl From<FindAllPkgCoordsError> for PackybaraRestError {
+    fn from(error: FindAllPkgCoordsError) -> PackybaraRestError {
+        PackybaraRestError::FindAllPkgCoordsError(error)
+    }
+}
+//
 impl<'r> Responder<'r> for PackybaraRestError {
     fn respond_to(self,  _: &Request) -> response::Result<'r> {
        

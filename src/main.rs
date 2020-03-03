@@ -13,6 +13,7 @@ use packybara_rest::{
     static_rocket_route_info_for_roles,
     static_rocket_route_info_for_sites,
     static_rocket_route_info_for_pins,
+    static_rocket_route_info_for_pkgcoords,
     MyPgDatabase
 };
 use std::collections::HashMap;
@@ -36,6 +37,7 @@ fn main() {
         packages,
         packagesxml,
         pins,
+        pkgcoords,
         platforms,
         roles,
         root, 

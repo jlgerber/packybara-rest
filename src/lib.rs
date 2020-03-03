@@ -21,5 +21,6 @@ pub use crud::platforms::static_rocket_route_info_for_platforms;
 pub use crud::roles::static_rocket_route_info_for_roles;
 pub use crud::sites::static_rocket_route_info_for_sites;
 pub use crud::pins::static_rocket_route_info_for_pins;
+pub use crud::pkgcoords::static_rocket_route_info_for_pkgcoords;
 pub mod route_desc;
 pub use route_desc::RouteDesc;
