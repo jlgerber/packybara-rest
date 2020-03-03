@@ -968,8 +968,8 @@ checksum = "2839e79665f131bdb5782e51f2c6c9599c133c6098982a54c794358bf432529c"
 
 [[package]]
 name = "packybara"
-version = "0.52.1"
-source = "git+https://github.com/jlgerber/packybara?tag=v0.52.1#1f9fa02d917ce17ee25720222177d5c743b05c85"
+version = "0.53.2"
+source = "git+https://github.com/jlgerber/packybara?tag=v0.53.2#82c913a197be8000d4f818433fdac8905a257296"
 dependencies = [
  "chrono",
  "env_logger",
@@ -993,7 +993,7 @@ dependencies = [
 
 [[package]]
 name = "packybara-rest"
-version = "0.10.0"
+version = "0.11.0"
 dependencies = [
  "log 0.4.8",
  "packybara",

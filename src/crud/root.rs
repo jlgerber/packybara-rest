@@ -13,6 +13,7 @@ use super::platforms::platforms_get_rd;
 use super::roles::roles_get_rd;
 use super::sites::sites_get_rd;
 use super::pins::pins_get_rd;
+use super::withs::withs_get_rd;
 use super::pkgcoords::pkgcoords_get_rd;
 
 use crate::route_desc::RouteDesc;
@@ -38,6 +39,7 @@ pub fn root(
             sites_get_rd(),
             versionpin_get_rd(),
             versionpins_get_rd(),
+            withs_get_rd(),
         ]
     };
     Ok(Json(root))
