@@ -10,7 +10,7 @@ use crate::RouteDesc;
 /// create the RouteDesc (route description object)
 pub(crate) fn platforms_get_rd() -> RouteDesc {
     RouteDesc::new(
-        "/v1/platforms>",
+        "/v1/platforms",
         "get",
         "Retrieve platforms "
     )

@@ -10,7 +10,7 @@ use crate::RouteDesc;
 /// create the RouteDesc (route description object)
 pub(crate) fn packages_get_rd() -> RouteDesc {
     RouteDesc::new(
-        "/v1/packages>",
+        "/v1/packages",
         "get",
         "Retrieve packages "
     )

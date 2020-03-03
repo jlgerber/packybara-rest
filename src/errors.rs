@@ -4,7 +4,8 @@ use packybara::db::{
     find_all::distributions::FindAllDistributionsError,
     find_all::levels::FindAllLevelsError,
     find_all::packages::FindAllPackagesError,
-    find_all::platforms::FindAllPlatformsError
+    find_all::platforms::FindAllPlatformsError,
+    find_all::roles::FindAllRolesError,
 
 };
 use rocket::http::Status;
@@ -22,8 +23,8 @@ pub enum PackybaraRestError {
     FindAllDistributionsError(FindAllDistributionsError),
     FindAllLevelsError(FindAllLevelsError),
     FindAllPackagesError(FindAllPackagesError),
-    FindAllPlatformsError(FindAllPlatformsError)
-
+    FindAllPlatformsError(FindAllPlatformsError),
+    FindAllRolesError(FindAllRolesError),
 }
 
 #[derive(Serialize)]
@@ -83,6 +84,13 @@ impl From<PackybaraRestError> for PbError {
                     msg: e.to_string()
                 }
             }
+            PackybaraRestError::FindAllRolesError(e) => {
+                PbError {
+                    status: 400,
+                    error: "FindAllRolessError",
+                    msg: e.to_string()
+                }
+            }
         }
     }
 }
@@ -123,6 +131,11 @@ impl From<FindAllPlatformsError> for PackybaraRestError {
     }
 }
 
+impl From<FindAllRolesError> for PackybaraRestError {
+    fn from(error: FindAllRolesError) -> PackybaraRestError {
+        PackybaraRestError::FindAllRolesError(error)
+    }
+}
 impl<'r> Responder<'r> for PackybaraRestError {
     fn respond_to(self,  _: &Request) -> response::Result<'r> {
        

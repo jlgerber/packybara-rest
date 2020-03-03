@@ -18,6 +18,6 @@ pub use crud::distributions::static_rocket_route_info_for_distributions;
 pub use crud::levels::static_rocket_route_info_for_levels;
 pub use crud::packages::static_rocket_route_info_for_packages;
 pub use crud::platforms::static_rocket_route_info_for_platforms;
-
+pub use crud::roles::static_rocket_route_info_for_roles;
 pub mod route_desc;
 pub use route_desc::RouteDesc;

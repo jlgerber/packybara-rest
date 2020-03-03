@@ -10,6 +10,7 @@ use packybara_rest::{
     static_rocket_route_info_for_levels,
     static_rocket_route_info_for_packages,
     static_rocket_route_info_for_platforms,
+    static_rocket_route_info_for_roles,
     MyPgDatabase
 };
 use std::collections::HashMap;
@@ -33,6 +34,7 @@ fn main() {
         packages,
         packagesxml,
         platforms,
+        roles,
         root, 
         versionpin, 
         versionpins, 
