@@ -5,7 +5,7 @@ use packybara::db::traits::*;
 use rocket_contrib::json::Json;
 use crate::MyPgDatabase;
 use crate::ApiResult;
-use packybara::db::search_attribute::{SearchAttribute, OrderDirection};
+use packybara::db::search_attribute::OrderDirection;
 use std::str::FromStr;
 use crate::RouteDesc;
 use std::ops::Deref;
@@ -24,7 +24,7 @@ pub(crate) fn distributions_get_rd() -> RouteDesc {
 }
 
 #[get("/v1/distributions?<package>&<version>&<order_dir>")]             
-pub fn versionpins(
+pub fn distributions(
     package: Option<String>, 
     version: Option<String>, 
     order_dir: Option<String>,

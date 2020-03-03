@@ -6,6 +6,7 @@ use packybara_rest::{
     static_rocket_route_info_for_versionpins, 
     static_rocket_route_info_for_root,
     static_rocket_route_info_for_packagesxml,
+    static_rocket_route_info_for_distributions,
     MyPgDatabase
 };
 use std::collections::HashMap;
@@ -23,6 +24,12 @@ fn main() {
 
     rocket::custom(config)
     .attach(MyPgDatabase::fairing())
-    .mount("/", routes![root, versionpin, versionpins, packagesxml])
+    .mount("/", routes![
+        root, 
+        distributions,
+        versionpin, 
+        versionpins, 
+        packagesxml
+    ])
     .launch();
 }   
