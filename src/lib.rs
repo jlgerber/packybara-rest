@@ -8,6 +8,7 @@ pub mod errors;
 pub use errors::PackybaraRestError;
 pub mod database;
 pub use database::MyPgDatabase;
+
 pub mod crud;
 pub use crud::versionpin::static_rocket_route_info_for_versionpin;
 pub use crud::versionpins::static_rocket_route_info_for_versionpins;
@@ -16,6 +17,7 @@ pub use crud::packages_xml::static_rocket_route_info_for_packagesxml;
 pub use crud::distributions::static_rocket_route_info_for_distributions;
 pub use crud::levels::static_rocket_route_info_for_levels;
 pub use crud::packages::static_rocket_route_info_for_packages;
+pub use crud::platforms::static_rocket_route_info_for_platforms;
 
 pub mod route_desc;
 pub use route_desc::RouteDesc;
