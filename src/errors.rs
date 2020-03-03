@@ -1,6 +1,7 @@
 use packybara::db::{
     find::versionpin::FindVersionPinError,
-    find_all::versionpins::FindAllVersionPinsError
+    find_all::versionpins::FindAllVersionPinsError,
+    find_all::distributions::FindAllDistributionsError
 };
 use rocket::http::Status;
 use serde::Serialize;
@@ -13,7 +14,8 @@ use rocket::http::ContentType;
 #[derive(Debug)]
 pub enum PackybaraRestError {
     FindVersionPinError(FindVersionPinError),
-    FindAllVersionPinsError(FindAllVersionPinsError)
+    FindAllVersionPinsError(FindAllVersionPinsError),
+    FindAllDistributionsError(FindAllDistributionsError)
 }
 
 #[derive(Serialize)]
@@ -46,6 +48,13 @@ impl From<PackybaraRestError> for PbError {
                     msg: e.to_string()
                 }
             }
+            PackybaraRestError::FindAllDistributionsError(e) => {
+                PbError {
+                    status: 400,
+                    error: "FindAllDistributionsError",
+                    msg: e.to_string()
+                }
+            }
         }
     }
 }
@@ -59,6 +68,12 @@ impl From<FindVersionPinError> for PackybaraRestError {
 impl From<FindAllVersionPinsError> for PackybaraRestError {
     fn from(error: FindAllVersionPinsError) -> PackybaraRestError {
         PackybaraRestError::FindAllVersionPinsError(error)
+    }
+}
+
+impl From<FindAllDistributionsError> for PackybaraRestError {
+    fn from(error: FindAllDistributionsError) -> PackybaraRestError {
+        PackybaraRestError::FindAllDistributionsError(error)
     }
 }
 

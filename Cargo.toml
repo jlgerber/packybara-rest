@@ -1,13 +1,13 @@
 [package]
 name = "packybara-rest"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["jlgerber <jlgerber@gmail.com>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-packybara = {git= "https://github.com/jlgerber/packybara", tag="v0.50.1"}
+packybara = {git= "https://github.com/jlgerber/packybara", tag="v0.51.0"}
 serde = { version = "1.0.104", features = ["derive"] }
 log = "0.4.8"
 serde_json = "1.0.48"
