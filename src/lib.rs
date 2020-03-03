@@ -14,6 +14,7 @@ pub use crud::versionpins::static_rocket_route_info_for_versionpins;
 pub use crud::root::static_rocket_route_info_for_root;
 pub use crud::packages_xml::static_rocket_route_info_for_packagesxml;
 pub use crud::distributions::static_rocket_route_info_for_distributions;
+pub use crud::levels::static_rocket_route_info_for_levels;
 
 pub mod route_desc;
 pub use route_desc::RouteDesc;
