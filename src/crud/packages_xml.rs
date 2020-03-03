@@ -1,3 +1,5 @@
+//! Generate am xml file which stores the versionpins for a specific
+//! show. Historically, this file has been known as a packages.xml
 use rocket::post;
 use serde::{Serialize,Deserialize};
 use rocket_contrib::json::Json;
