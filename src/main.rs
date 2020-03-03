@@ -8,6 +8,7 @@ use packybara_rest::{
     static_rocket_route_info_for_packagesxml,
     static_rocket_route_info_for_distributions,
     static_rocket_route_info_for_levels,
+    static_rocket_route_info_for_packages,
     MyPgDatabase
 };
 use std::collections::HashMap;
@@ -28,10 +29,11 @@ fn main() {
     .mount("/", routes![
         distributions,
         levels,
+        packages,
+        packagesxml,
         root, 
         versionpin, 
         versionpins, 
-        packagesxml,
     ])
     .launch();
 }   
