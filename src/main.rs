@@ -14,6 +14,7 @@ use packybara_rest::{
     static_rocket_route_info_for_sites,
     static_rocket_route_info_for_pins,
     static_rocket_route_info_for_pkgcoords,
+    static_rocket_route_info_for_versionpin_withs,
     static_rocket_route_info_for_withs,
     MyPgDatabase
 };
@@ -45,6 +46,7 @@ fn main() {
         sites,
         versionpin, 
         versionpins, 
+        versionpin_withs,
         withs,
     ])
     .launch();

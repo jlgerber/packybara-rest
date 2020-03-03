@@ -23,5 +23,7 @@ pub use crud::sites::static_rocket_route_info_for_sites;
 pub use crud::pins::static_rocket_route_info_for_pins;
 pub use crud::pkgcoords::static_rocket_route_info_for_pkgcoords;
 pub use crud::withs::static_rocket_route_info_for_withs;
+pub use crud::versionpin_withs::static_rocket_route_info_for_versionpin_withs;
+
 pub mod route_desc;
 pub use route_desc::RouteDesc;

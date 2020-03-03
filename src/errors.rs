@@ -7,6 +7,7 @@ use packybara::db::{
     find_all::platforms::FindAllPlatformsError,
     find_all::roles::FindAllRolesError,
     find_all::sites::FindAllSitesError,
+    find_all::versionpin_withs::FindAllWithsError,
     find::pins::FindPinsError,
     find::withs::FindWithsError,
     search_attribute::SearchModeError,
@@ -36,6 +37,7 @@ pub enum PackybaraRestError {
     SearchModeError(SearchModeError),
     FindAllPkgCoordsError(FindAllPkgCoordsError),
     FindWithsError(FindWithsError),
+    FindAllWithsError(FindAllWithsError),
 }
 
 #[derive(Serialize)]
@@ -144,6 +146,13 @@ impl From<PackybaraRestError> for PbError {
                     msg: e.to_string()
                 }
             }
+            PackybaraRestError::FindAllWithsError(e) => {
+                PbError {
+                    status: 400,
+                    error: "FindAllWithsError",
+                    msg: e.to_string()
+                }
+            }
         }
     }
 }
@@ -223,6 +232,11 @@ impl From<FindAllPkgCoordsError> for PackybaraRestError {
 impl From<FindWithsError> for PackybaraRestError {
     fn from(error: FindWithsError) -> PackybaraRestError {
         PackybaraRestError::FindWithsError(error)
+    }
+}
+impl From<FindAllWithsError> for PackybaraRestError {
+    fn from(error: FindAllWithsError) -> PackybaraRestError {
+        PackybaraRestError::FindAllWithsError(error)
     }
 }
 //
