@@ -6,7 +6,7 @@ use packybara::db::{
     find_all::packages::FindAllPackagesError,
     find_all::platforms::FindAllPlatformsError,
     find_all::roles::FindAllRolesError,
-
+    find_all::sites::FindAllSitesError,
 };
 use rocket::http::Status;
 use serde::Serialize;
@@ -25,6 +25,7 @@ pub enum PackybaraRestError {
     FindAllPackagesError(FindAllPackagesError),
     FindAllPlatformsError(FindAllPlatformsError),
     FindAllRolesError(FindAllRolesError),
+    FindAllSitesError(FindAllSitesError),
 }
 
 #[derive(Serialize)]
@@ -87,7 +88,14 @@ impl From<PackybaraRestError> for PbError {
             PackybaraRestError::FindAllRolesError(e) => {
                 PbError {
                     status: 400,
-                    error: "FindAllRolessError",
+                    error: "FindAllRolesError",
+                    msg: e.to_string()
+                }
+            }
+            PackybaraRestError::FindAllSitesError(e) => {
+                PbError {
+                    status: 400,
+                    error: "FindAllSitesError",
                     msg: e.to_string()
                 }
             }
@@ -136,6 +144,13 @@ impl From<FindAllRolesError> for PackybaraRestError {
         PackybaraRestError::FindAllRolesError(error)
     }
 }
+
+impl From<FindAllSitesError> for PackybaraRestError {
+    fn from(error: FindAllSitesError) -> PackybaraRestError {
+        PackybaraRestError::FindAllSitesError(error)
+    }
+}
+
 impl<'r> Responder<'r> for PackybaraRestError {
     fn respond_to(self,  _: &Request) -> response::Result<'r> {
        

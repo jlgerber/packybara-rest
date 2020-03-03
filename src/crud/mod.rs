@@ -5,5 +5,6 @@ pub mod packages_xml;
 pub mod platforms;
 pub mod roles;
 pub mod root;
+pub mod sites;
 pub mod versionpin;
 pub mod versionpins;
