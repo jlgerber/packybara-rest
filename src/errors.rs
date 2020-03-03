@@ -7,7 +7,10 @@ use packybara::db::{
     find_all::platforms::FindAllPlatformsError,
     find_all::roles::FindAllRolesError,
     find_all::sites::FindAllSitesError,
+    find::pins::FindPinsError,
+
 };
+use strum;
 use rocket::http::Status;
 use serde::Serialize;
 use rocket::response::{self, Response,Responder};
@@ -26,6 +29,8 @@ pub enum PackybaraRestError {
     FindAllPlatformsError(FindAllPlatformsError),
     FindAllRolesError(FindAllRolesError),
     FindAllSitesError(FindAllSitesError),
+    FindPinsError(FindPinsError),
+    StrumParseError(strum::ParseError),
 }
 
 #[derive(Serialize)]
@@ -99,6 +104,20 @@ impl From<PackybaraRestError> for PbError {
                     msg: e.to_string()
                 }
             }
+            PackybaraRestError::FindPinsError(e) => {
+                PbError {
+                    status: 400,
+                    error: "FindPinsError",
+                    msg: e.to_string()
+                }
+            }
+            PackybaraRestError::StrumParseError(e) => {
+                PbError {
+                    status: 400,
+                    error: "StrumParseError",
+                    msg: e.to_string()
+                }
+            }
         }
     }
 }
@@ -148,6 +167,18 @@ impl From<FindAllRolesError> for PackybaraRestError {
 impl From<FindAllSitesError> for PackybaraRestError {
     fn from(error: FindAllSitesError) -> PackybaraRestError {
         PackybaraRestError::FindAllSitesError(error)
+    }
+}
+
+impl From<FindPinsError> for PackybaraRestError {
+    fn from(error: FindPinsError) -> PackybaraRestError {
+        PackybaraRestError::FindPinsError(error)
+    }
+}
+
+impl From<strum::ParseError> for PackybaraRestError {
+    fn from(error: strum::ParseError) -> PackybaraRestError {
+        PackybaraRestError::StrumParseError(error)
     }
 }
 

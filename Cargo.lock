@@ -968,8 +968,8 @@ checksum = "2839e79665f131bdb5782e51f2c6c9599c133c6098982a54c794358bf432529c"
 
 [[package]]
 name = "packybara"
-version = "0.51.0"
-source = "git+https://github.com/jlgerber/packybara?tag=v0.51.0#f99bfe6ebe7980e6b6bdaab1c4babd91f3d3fea1"
+version = "0.52.1"
+source = "git+https://github.com/jlgerber/packybara?tag=v0.52.1#1f9fa02d917ce17ee25720222177d5c743b05c85"
 dependencies = [
  "chrono",
  "env_logger",
@@ -993,7 +993,7 @@ dependencies = [
 
 [[package]]
 name = "packybara-rest"
-version = "0.8.0"
+version = "0.9.0"
 dependencies = [
  "log 0.4.8",
  "packybara",
@@ -1004,6 +1004,7 @@ dependencies = [
  "rocket_contrib",
  "serde",
  "serde_json",
+ "strum",
  "tokio-postgres",
 ]
 
@@ -1162,9 +1163,9 @@ dependencies = [
 
 [[package]]
 name = "proc-macro-error"
-version = "0.4.10"
+version = "0.4.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8a857f7c61b149c868eb7e40311b48502fcc924744fb73191962748643336568"
+checksum = "e7959c6467d962050d639361f7703b2051c43036d03493c36f01d440fdd3138a"
 dependencies = [
  "proc-macro-error-attr",
  "proc-macro2 1.0.9",
@@ -1175,9 +1176,9 @@ dependencies = [
 
 [[package]]
 name = "proc-macro-error-attr"
-version = "0.4.10"
+version = "0.4.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "075d00534b62f176b55a48b68319be2f3fc05616d68ecd2bcb66bac0a49170e1"
+checksum = "e4002d9f55991d5e019fb940a90e1a95eb80c24e77cb2462dd4dc869604d543a"
 dependencies = [
  "proc-macro2 1.0.9",
  "quote 1.0.2",
@@ -1347,9 +1348,9 @@ dependencies = [
 
 [[package]]
 name = "regex-syntax"
-version = "0.6.15"
+version = "0.6.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7246cd0a0a6ec2239a5405b2b16e3f404fa0dcc6d28f5f5b877bf80e33e0f294"
+checksum = "1132f845907680735a84409c3bebc64d1364a5683ffbce899550cd09d5eaefc1"
 
 [[package]]
 name = "ring"
@@ -1369,7 +1370,7 @@ dependencies = [
 [[package]]
 name = "rocket"
 version = "0.5.0-dev"
-source = "git+https://github.com/SergioBenitez/Rocket.git#20a76fee25673d3c4783d3bc3b3111f6bd5c1c69"
+source = "git+https://github.com/SergioBenitez/Rocket.git#dfc9e9aab01d349da32c52db393e35b7fffea63c"
 dependencies = [
  "atty",
  "binascii",
@@ -1389,7 +1390,7 @@ dependencies = [
 [[package]]
 name = "rocket_codegen"
 version = "0.5.0-dev"
-source = "git+https://github.com/SergioBenitez/Rocket.git#20a76fee25673d3c4783d3bc3b3111f6bd5c1c69"
+source = "git+https://github.com/SergioBenitez/Rocket.git#dfc9e9aab01d349da32c52db393e35b7fffea63c"
 dependencies = [
  "devise",
  "glob",
@@ -1403,7 +1404,7 @@ dependencies = [
 [[package]]
 name = "rocket_contrib"
 version = "0.5.0-dev"
-source = "git+https://github.com/SergioBenitez/Rocket.git#20a76fee25673d3c4783d3bc3b3111f6bd5c1c69"
+source = "git+https://github.com/SergioBenitez/Rocket.git#dfc9e9aab01d349da32c52db393e35b7fffea63c"
 dependencies = [
  "log 0.4.8",
  "notify",
@@ -1419,7 +1420,7 @@ dependencies = [
 [[package]]
 name = "rocket_contrib_codegen"
 version = "0.5.0-dev"
-source = "git+https://github.com/SergioBenitez/Rocket.git#20a76fee25673d3c4783d3bc3b3111f6bd5c1c69"
+source = "git+https://github.com/SergioBenitez/Rocket.git#dfc9e9aab01d349da32c52db393e35b7fffea63c"
 dependencies = [
  "devise",
  "quote 1.0.2",
@@ -1430,7 +1431,7 @@ dependencies = [
 [[package]]
 name = "rocket_http"
 version = "0.5.0-dev"
-source = "git+https://github.com/SergioBenitez/Rocket.git#20a76fee25673d3c4783d3bc3b3111f6bd5c1c69"
+source = "git+https://github.com/SergioBenitez/Rocket.git#dfc9e9aab01d349da32c52db393e35b7fffea63c"
 dependencies = [
  "cookie",
  "hyper",

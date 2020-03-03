@@ -8,3 +8,4 @@ pub mod root;
 pub mod sites;
 pub mod versionpin;
 pub mod versionpins;
+pub mod pins;

@@ -12,6 +12,7 @@ use super::packages_xml::packagesxml_post_rd;
 use super::platforms::platforms_get_rd;
 use super::roles::roles_get_rd;
 use super::sites::sites_get_rd;
+use super::pins::pins_get_rd;
 use crate::route_desc::RouteDesc;
 
 #[derive(Debug,Serialize)]
@@ -28,6 +29,7 @@ pub fn root(
             levels_get_rd(),
             packages_get_rd(),
             packagesxml_post_rd(),
+            pins_get_rd(),
             platforms_get_rd(),
             roles_get_rd(),
             sites_get_rd(),
