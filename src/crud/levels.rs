@@ -13,6 +13,7 @@ use std::str::FromStr;
 /// create the RouteDesc (route description object)
 pub(crate) fn levels_get_rd() -> RouteDesc {
     RouteDesc::new(
+        "levels",
         "/v1/levels?<level>&<show>&<depth>&<order_by>",
         "get",
         "Retrieve levels matching the supplied parameters"

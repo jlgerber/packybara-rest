@@ -3,6 +3,7 @@ use serde::Serialize;
 
 #[derive(Debug, Serialize)]
 pub struct RouteDesc {
+    name: String,
     route: String,
     verb: String,
     description: String, 
@@ -12,8 +13,9 @@ pub struct RouteDesc {
 
 impl RouteDesc {
     /// New up a RouteDesc
-    pub fn new<I>(route: I, verb: I, description: I) -> Self where I: Into<String> {
+    pub fn new<I>(name: I, route: I, verb: I, description: I) -> Self where I: Into<String> {
         Self {
+            name: name.into(),
             route: route.into(),
             verb: verb.into(),
             description: description.into(),
@@ -44,7 +46,7 @@ impl RouteDesc {
     ///            .build();
     /// ```
     pub fn build(&mut self) -> Self {
-        let mut new_route = RouteDesc::new("","","");
+        let mut new_route = RouteDesc::new("","","","");
         std::mem::swap(&mut new_route, self);
         new_route
     }

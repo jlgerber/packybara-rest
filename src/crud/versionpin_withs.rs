@@ -11,6 +11,7 @@ use packybara::types::IdType;
 /// create the RouteDesc (route description object)
 pub(crate) fn versionpin_withs_get_rd() -> RouteDesc {
     RouteDesc::new(
+        "versionpin_withs",
         "/v1/vpin-withs/<vpin_id>",
         "get",
         "Retrieve withs matching the supplied parameters"

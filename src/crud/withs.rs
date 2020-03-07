@@ -13,6 +13,7 @@ use std::str::FromStr;
 /// create the RouteDesc (route description object)
 pub(crate) fn withs_get_rd() -> RouteDesc {
     RouteDesc::new(
+        "withs",
         "/v1/withs?<package>&<level>&<role>&<platform>&<site>&<order_by>",
         "get",
         "Retrieve withs matching the supplied parameters"

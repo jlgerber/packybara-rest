@@ -11,6 +11,7 @@ use crate::RouteDesc;
 /// create the RouteDesc (route description object)
 pub(crate) fn versionpin_get_rd() -> RouteDesc {
     RouteDesc::new(
+        "versionpin",
         "/v1/versionpin/<package>?<level>&<role>&<platform>&<site>",
         "get",
         "Retrieve the closest versionpin and withs to the supplied parameters"

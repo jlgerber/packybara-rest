@@ -11,6 +11,7 @@ use std::ops::Deref;
 /// create the RouteDesc (route description object)
 pub(crate) fn roles_get_rd() -> RouteDesc {
     RouteDesc::new(
+        "roles",
         "/v1/roles?<category>",
         "get",
         "Retrieve roles "

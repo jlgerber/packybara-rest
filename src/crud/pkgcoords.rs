@@ -12,6 +12,7 @@ use packybara::SearchMode;
 /// create the RouteDesc (route description object)
 pub(crate) fn pkgcoords_get_rd() -> RouteDesc {
     RouteDesc::new(
+        "pkgcoords",
         "/v1/pkgcoords?<package>&<level>&<role>&<platform>&<site>&<mode>&<order_by>",
         "get",
         "Retrieve pkgcoords matching the supplied parameters"

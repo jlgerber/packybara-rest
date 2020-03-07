@@ -14,6 +14,7 @@ use crate::RouteDesc;
 /// create the RouteDesc (route description object)
 pub(crate) fn packagesxml_post_rd() -> RouteDesc {
     RouteDesc::new(
+        "packagesxml",
         "/v1/packages.xml",
         "post",
         "Generate a pakages.xml given an appropriate posted document"

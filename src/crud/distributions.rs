@@ -13,6 +13,7 @@ use std::ops::Deref;
 /// create the RouteDesc (route description object)
 pub(crate) fn distributions_get_rd() -> RouteDesc {
     RouteDesc::new(
+        "distributions",
         "/v1/distributions?<package>&<version>&<order_dir>",
         "get",
         "Retrieve distributions matching the supplied parameters"

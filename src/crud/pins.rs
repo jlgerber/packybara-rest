@@ -13,6 +13,7 @@ use std::str::FromStr;
 /// create the RouteDesc (route description object)
 pub(crate) fn pins_get_rd() -> RouteDesc {
     RouteDesc::new(
+        "pins",
         "/v1/pins?<level>&<role>&<platform>&<site>&<search_mode>&<order_by>",
         "get",
         "Retrieve pins "

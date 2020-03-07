@@ -13,6 +13,7 @@ use crate::RouteDesc;
 /// create the RouteDesc (route description object)
 pub(crate) fn versionpins_get_rd() -> RouteDesc {
     RouteDesc::new(
+        "versionpins",
         "/v1/versionpins?<package>&<level>&<role>&<platform>&<site>&<order_by>&<order_dir>&<limit>",
         "get",
         "Retrieve versionpins matching the supplied parameters"

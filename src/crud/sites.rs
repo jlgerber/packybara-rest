@@ -9,7 +9,7 @@ use crate::RouteDesc;
 
 /// create the RouteDesc (route description object)
 pub(crate) fn sites_get_rd() -> RouteDesc {
-    RouteDesc::new(
+    RouteDesc::new("sites",
         "/v1/sites?<category>",
         "get",
         "Retrieve sites "
