@@ -27,3 +27,5 @@ pub use crud::versionpin_withs::static_rocket_route_info_for_versionpin_withs;
 
 pub mod route_desc;
 pub use route_desc::RouteDesc;
+pub mod prefs;
+

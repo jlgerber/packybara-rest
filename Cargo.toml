@@ -13,6 +13,7 @@ r2d2 = "0.8.8"
 r2d2_postgres = "0.16.0"
 tokio-postgres = "0.5.2"
 strum = "0.17.1"
+preferences = {git = "https://github.com/jlgerber/rustypreferences", tag="v0.14.1"}
 
 [dependencies.rocket]
 git = "https://github.com/SergioBenitez/Rocket.git"
