@@ -1,0 +1,13 @@
+---
+prod:
+  host: localhost
+  user: postgres
+  password: example
+  dbname: packrat
+  port: 5432
+dev:
+  host: localhost
+  user: postgres
+  password: example
+  dbname: packrat
+  port: 5432

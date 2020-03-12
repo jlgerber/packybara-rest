@@ -1,7 +1,4 @@
 #![feature(proc_macro_hygiene, decl_macro)]
-use std::env;
-use rocket;
-use rocket::routes;
 use log;
 use packybara_rest::{
     static_rocket_route_info_for_versionpin, 
@@ -22,23 +19,40 @@ use packybara_rest::{
     MyPgDatabase
 };
 use preferences::{traits::*, DDContext, DDPreferenceFinder, PreferenceName};
-
-use std::collections::HashMap;
+use rocket;
 use rocket::config::{Config, Environment, Value};
+use rocket::routes;
+use std::collections::HashMap;
+use structopt::*;
+use std::path::PathBuf;
+use env_logger;
+
+#[derive(Debug, StructOpt)]
+#[structopt(name = "packybara-rest", about = "packybara restful server")]
+struct Opt {
+    /// Specify the path to the preference file
+    #[structopt(short = "f", long = "file", parse(from_os_str))]
+    output: Option<PathBuf>,
+
+    /// Test mode
+    #[structopt(short = "t", long = "test-mode")]
+    test_mode: bool,
+}
 
 fn main() {
-    let test_mode=false;
-    let args: Vec<String> = env::args().collect();
-    let rest_pref = if args.len() > 1 {
-        match prefs::PackybaraRestPrefs::load_file(&args[1]) {
-            Ok(v) => v,
-            Err(_) => {
-                log::warn!("uanble to load preference from supplied file. Falling back to default");
+    let Opt {output, test_mode} = Opt::from_args();
+    
+    let rest_pref = if let Some(prefs) = output {
+        match prefs::PackybaraRestPrefs::load_file(prefs.as_os_str().to_str().unwrap_or("")) {
+            Ok(v) => {println!("found prefs");v},
+            Err(e) => {
+                log::warn!("unable to load preference from supplied file. Falling back to default");
+                println!("{:?}",e);
                 prefs::PackybaraRestPrefs::default()
             }
-        }//? 
+        }
     } else {
-        let finder = DDPreferenceFinder::from_env(PreferenceName::Main("pbgui".to_string()));
+        let finder = DDPreferenceFinder::from_env(PreferenceName::Main("packybara_rest".to_string()));
         let ctx = if test_mode {
             DDContext::TestEqUser
         } else {

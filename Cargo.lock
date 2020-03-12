@@ -1081,6 +1081,7 @@ dependencies = [
 name = "packybara-rest"
 version = "0.14.0"
 dependencies = [
+ "env_logger",
  "log 0.4.8",
  "packybara",
  "postgres",
@@ -1091,6 +1092,7 @@ dependencies = [
  "rocket_contrib",
  "serde 1.0.104",
  "serde_json",
+ "structopt",
  "strum",
  "tokio-postgres",
 ]

@@ -5,7 +5,7 @@ use serde::Deserialize;
 
 /* Example document
 ---
-database:
+prod:
     host:
     user:
     password:
@@ -16,7 +16,7 @@ database:
 #[derive(Debug, PartialEq, Eq)]
 pub enum Mode {
     Prod,
-    Test,
+    Dev,
 }
 
 /// Struct which models the pbgui preference. It implements serde::Deserialize so as
@@ -24,7 +24,7 @@ pub enum Mode {
 #[derive(Debug, PartialEq, Deserialize)]
 pub struct PackybaraRestPrefs {
     pub prod: PackybaraRestDbPrefs,
-    pub test: PackybaraRestDbPrefs,
+    pub dev: PackybaraRestDbPrefs,
 }
 use std::fmt;
 
@@ -108,7 +108,7 @@ impl std::default::Default for PackybaraRestPrefs {
     fn default() -> Self {
         Self {
             prod: PackybaraRestDbPrefs::default(),
-            test: PackybaraRestDbPrefs::default()
+            dev: PackybaraRestDbPrefs::default()
         }
     }
 }
@@ -131,7 +131,7 @@ impl PackybaraRestPrefs {
                             self.prod.dbname.as_str(),
                             self.prod.port,
                         ),
-            Mode::Test => ConnectParams::new(
+            Mode::Dev => ConnectParams::new(
                             self.prod.host.as_str(),
                             self.prod.user.as_str(),
                             self.prod.password.as_str(),
